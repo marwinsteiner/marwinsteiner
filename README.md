@@ -40,10 +40,6 @@
   <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=marwinsteiner&theme=dracula" />
 </p>
 
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=marwinsteiner&theme=dracula&no-bg=false&no-frame=false" />
-</p>
-
 ---
 
 <p align="center">🔥 Always improving. Always building. Always learning.</p>
