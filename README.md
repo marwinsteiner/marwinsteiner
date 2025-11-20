@@ -46,15 +46,4 @@
 
 ---
 
-## 😎 Bonus Visual — Pacman Contributions
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/marwinsteiner/marwinsteiner/output/pacman-contribution-graph-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/marwinsteiner/marwinsteiner/output/pacman-contribution-graph.svg">
-    <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/marwinsteiner/marwinsteiner/output/pacman-contribution-graph.svg">
-  </picture>
-</p>
-
----
-
 <p align="center">🔥 Always improving. Always building. Always learning.</p>
