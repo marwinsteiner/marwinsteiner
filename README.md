@@ -3,7 +3,7 @@
 [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marwinsteiner/)
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:marwin.steiner@gmail.com)
 
-I'm a finance graduate from [Bayes Business School](https://www.bayes.city.ac.uk/) (BSc Investment & Financial Risk Management, First Class) with experience in data engineering, systematic trading, and derivatives research. I'm interested in volatility modelling, quantitative trading, and building tools that bridge financial theory and production software.
+I'm a finance graduate from [Bayes Business School](https://www.bayes.city.ac.uk/) (BSc Investment & Financial Risk Management, Top Decile) with experience in data engineering, systematic trading, and derivatives research. I'm interested in volatility modelling, quantitative trading, and building tools that bridge financial theory and production software.
 
 Currently finishing my undergraduate thesis on forecasting dislocations in the implied volatility surface for US equity index ETFs using stochastic volatility inspired parametrizations. Previously interned at **Swiss Re** (data engineering) and **Swiss Life Asset Managers** (investments).
 
