@@ -1,20 +1,33 @@
 ## Hi, I'm Marwin 👋
 
-[![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marwinsteiner/)
+[![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marwin-alexander-steiner/)
+[![Substack](https://img.shields.io/badge/Substack-FF6719?style=for-the-badge&logo=substack&logoColor=white)](https://substack.com/@marwin628124)
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:marwin.steiner@gmail.com)
 
 I'm a finance graduate from [Bayes Business School](https://www.bayes.city.ac.uk/) (BSc Investment & Financial Risk Management, Top Decile) with experience in data engineering, systematic trading, and derivatives research. I'm interested in volatility modelling, quantitative trading, and building tools that bridge financial theory and production software.
 
-Currently finishing my undergraduate thesis on forecasting dislocations in the implied volatility surface for US equity index ETFs using stochastic volatility inspired parametrizations. Previously interned at **Swiss Re** (data engineering) and **Swiss Life Asset Managers** (investments).
+Currently finishing my undergraduate thesis on forecasting dislocations in the implied volatility surface for US equity index ETFs using stochastic volatility-inspired parametrizations. Previously a Data Engineer at **Swiss Re** and Summer Intern at **Swiss Life Asset Managers**.
 
-### Projects
+### What I'm thinking about
+
+I spend most of my time at the intersection of derivatives pricing, systematic trading, and event-driven markets. A few threads I'm currently pulling on:
+
+- **Vol surface calibration & relative value.** My thesis work involves detecting mispricings on SVI-parametrized implied vol surfaces. The tooling I built for this is now [`pysvi`](https://github.com/marwinsteiner/pysvi), an open-source Python library on PyPI. I'm also exploring [0DTE gamma imbalance strategies in NDX options](https://github.com/marwinsteiner/ndx-0dte-gamma-imbalance).
+- **Event-driven & prediction markets.** I've been building automated trading infrastructure for [Polymarket](https://github.com/marwinsteiner/polymarket-bot), as well as a [Binance plugin for a library which uses SSVI surfaces to trade the Polymarket BTC up/down market](https://github.com/marwinsteiner/polymarket-btc-updown). In my view, prediction markets are one of the most interesting laboratories for testing probabilistic reasoning under uncertainty.
+- **Systematic multi-asset strategies.** [`sysls`](https://github.com/marwinsteiner/sysls) is a framework for systematic long-short strategies across multiple asset classes. (Under construction) Separately, I've been building a [perpetual futures carry dashboard](https://github.com/marwinsteiner/perp-dashboard) and an [OEX market-making simulation](https://github.com/marwinsteiner/oex-market-maker), the latter of which I used in the Quant Trading Society (which I founded), to show other students the intuition behind market making.
+
+I occasionally write about interesting topics, for instance in problem-solving and sports betting on [Substack](https://substack.com/@marwin628124) — more to come as the thesis wraps up.
+
+### Featured projects
 
 | Project | Description |
 |---------|-------------|
-| [**pysvi**](https://github.com/marwinsteiner/pysvi) | SVI family vol surface calibration library, published on [PyPI](https://pypi.org/project/svi-py/). Implements raw SVI, SSVI, eSSVI, and jump-wings with configurable no-arbitrage constraints. |
-| [**Datex**] | Retail trading analytics platform — live brokerage data ingestion, multi-exchange order routing, and an LLM-powered strategy prototyping assistant. Pre-MVP. |
-| [**Options Pricing Engine**](https://github.com/marwinsteiner/option-pricer-cpp) | Black-Scholes pricer and implied vol fitter ported from Python to C++. |
-| **Quant Trading Society** | Founded at Bayes. Mentored peers on systematic strategy design and implementation on WorldQuant BRAIN.|
+| [**pysvi**](https://github.com/marwinsteiner/pysvi) | SVI family vol surface calibration library on [PyPI](https://pypi.org/project/svi-py/). Raw SVI, SSVI, eSSVI, jump-wings with configurable no-arbitrage constraints. |
+| [**sysls**](https://github.com/marwinsteiner/sysls) | Systematic multi-asset long-short strategy framework. |
+| [**polymarket-bot**](https://github.com/marwinsteiner/polymarket-bot) | Algorithmic trading framework for Polymarket prediction markets. |
+| [**polymarket-btc-updown**](https://github.com/marwinsteiner/polymarket-btc-updown) | Terminal probability calculator for BTC using SSVI surfaces calibrated on Deribit options. |
+| [**ndx-0dte-gamma-imbalance**](https://github.com/marwinsteiner/ndx-0dte-gamma-imbalance) | Gamma volatility arbitrage strategy in NDX 0DTE options. |
+| [**perp-dashboard**](https://github.com/marwinsteiner/perp-dashboard) | Perpetual futures arbitrage / reverse carry dashboard. |
 
 ### Toolbox
 
