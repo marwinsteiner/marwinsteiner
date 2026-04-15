@@ -5,22 +5,22 @@
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:marwin.steiner@gmail.com)
 [![HKJC API](https://img.shields.io/badge/🐎%20HKJC%20Racing%20API-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://hkjc-web.vercel.app/)
 
-I'm a finance graduate from [Bayes Business School](https://www.bayes.city.ac.uk/) (BSc Investment & Financial Risk Management, Top Decile) with experience in data engineering, systematic trading, and derivatives research. I'm interested in volatility modelling, quantitative trading, and building tools that bridge financial theory and production software.
+I'm a finance graduate from [Bayes Business School](https://www.bayes.city.ac.uk/) (BSc Investment & Financial Risk Management, Top Decile) with experience in data engineering, systematic trading, and derivatives research. If it's convex and complex, I'm interested!
 
-Currently finishing my undergraduate thesis on forecasting dislocations in the implied volatility surface for US equity index ETFs using stochastic volatility-inspired smile parametrizations. 
+Currently finishing my undergraduate thesis on forecasting dislocations in the implied volatility surface on equity index products using stochastic volatility-inspired smile parametrizations. 
 
 Previously, I worked as a Data Engineer at **Swiss Re** for a cloud analytics automation project, and before that, I was a Summer Intern at **Swiss Life Asset Managers**.
 
 ### What I'm thinking about
 
-I spend most of my time at the intersection of derivatives pricing, systematic trading, and event-driven markets. A few threads I'm currently pulling on:
+A few threads I'm currently pulling on:
 
-- **Vol surface calibration & relative value.** My thesis work involves detecting mispricings on SVI-parametrized implied vol surfaces. The tooling I built for this is now [`pysvi`](https://github.com/marwinsteiner/pysvi), an open-source Python library on PyPI. I'm also exploring [0DTE gamma imbalance strategies in NDX options](https://github.com/marwinsteiner/ndx-0dte-gamma-imbalance).
+- **Vol surface calibration & relative value.** My thesis work involves detecting mispricings on SVI-parametrized implied vol surfaces. The tooling I built for this is now [`pysvi`](https://github.com/marwinsteiner/pysvi) [![PyPI Downloads](https://static.pepy.tech/personalized-badge/svi-py?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/svi-py), an open-source Python library on PyPI. I'm also exploring [0DTE gamma imbalance strategies in NDX options](https://github.com/marwinsteiner/ndx-0dte-gamma-imbalance).
 - **Event-driven & prediction markets.** I've been building automated trading infrastructure for [Polymarket](https://github.com/marwinsteiner/polymarket-bot). In my view, prediction markets are one of the most interesting laboratories for testing probabilistic reasoning under uncertainty.
 - **Systematic multi-asset strategies.** [`sysls`](https://github.com/marwinsteiner/sysls) is a framework for systematic long-short strategies across multiple asset classes. (Under construction) Separately, I've been building a [perpetual futures carry dashboard](https://github.com/marwinsteiner/perp-dashboard) and an [OEX market-making simulation](https://github.com/marwinsteiner/oex-market-maker), the latter of which I used in the Quant Trading Society (which I founded), to show other students the intuition behind market making.
 - **Horse racing as a financial market.** 🐎 Hong Kong racing is one of the most liquid and data-rich betting markets in the world — more akin to a derivatives exchange than a sportsbook. I've been building infrastructure to treat it like one.
 
-I occasionally write about interesting topics, for instance in problem-solving and sports betting on [Substack](https://substack.com/@marwin628124) — more to come as the thesis wraps up.
+I occasionally write about my projects on [Substack](https://substack.com/@marwin628124) — more to come as the thesis wraps up.
 
 ### Featured projects
 
