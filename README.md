@@ -7,32 +7,33 @@
 
 I'm a finance graduate from [Bayes Business School](https://www.bayes.city.ac.uk/) (BSc Investment & Financial Risk Management, Top Decile) with experience in data engineering, systematic trading, and derivatives research. If it's convex and complex, I'm interested!
 
-Currently finishing my undergraduate thesis on forecasting dislocations in the implied volatility surface on equity index products using stochastic volatility-inspired smile parametrizations. 
+Right now, I'm building data and execution infrastructure for systematic trading in C++ and continuing my research in the relative-value volatility space.
 
-Previously, I worked as a Data Engineer at **Swiss Re** for a cloud analytics automation project, and before that, I was a Summer Intern at **Swiss Life Asset Managers**.
+Previous roles:
+- Data Engineer at Swiss Re
+- Summer Intern at Swiss Life Asset Managers
+- Spring Insight at Barclays
 
 ### What I'm thinking about
 
 A few threads I'm currently pulling on:
 
-- **Vol surface calibration & relative value.** My thesis work involves detecting mispricings on SVI-parametrized implied vol surfaces. The tooling I built for this is now [`pysvi`](https://github.com/marwinsteiner/pysvi) [![PyPI Downloads](https://static.pepy.tech/personalized-badge/svi-py?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/svi-py), an open-source Python library on PyPI. I'm also exploring [0DTE gamma imbalance strategies in NDX options](https://github.com/marwinsteiner/ndx-0dte-gamma-imbalance).
+- **Building volatility surfaces.** In my bachelor's thesis, I focused on volatility statistical arbitrage. To define fair value in the $\mathbb{Q}$ domain, you need an IV parametrisation. The tooling I built for this is now [`pysvi`](https://github.com/marwinsteiner/pysvi) [![PyPI Downloads](https://static.pepy.tech/personalized-badge/svi-py?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/svi-py), an open-source Python library on PyPI. 
 - **Event-driven & prediction markets.** I've been building automated trading infrastructure for [Polymarket](https://github.com/marwinsteiner/polymarket-bot). In my view, prediction markets are one of the most interesting laboratories for testing probabilistic reasoning under uncertainty.
-- **Systematic multi-asset strategies.** [`sysls`](https://github.com/marwinsteiner/sysls) is a framework for systematic long-short strategies across multiple asset classes. (Under construction) Separately, I've been building a [perpetual futures carry dashboard](https://github.com/marwinsteiner/perp-dashboard) and an [OEX market-making simulation](https://github.com/marwinsteiner/oex-market-maker), the latter of which I used in the Quant Trading Society (which I founded), to show other students the intuition behind market making.
-- **Horse racing as a financial market.** 🐎 Hong Kong racing is one of the most liquid and data-rich betting markets in the world — more akin to a derivatives exchange than a sportsbook. I've been building infrastructure to treat it like one.
+- **Longhand.** I did not like existing $\LaTeX$ editors, so I created my own research workspace: [Longhand.dev](https://www.longhand.dev)
+- **HKJC API.** As a transient interest, I wrote a scraper for and strung an API around the Hong Kong Jockey Club website, allowing retrieval of historic race and form data because I did not want to pay for existing services. The goal was to use machine learning to identify consistent race winners. This research is not publicly available.
 
-I occasionally write about my projects on [Substack](https://substack.com/@marwin628124) — more to come as the thesis wraps up.
+### Paper Abstracts
+Title: Mean Reversion in the Intraday Implied Volatility Surface of S&P 500 Options
 
-### Featured projects
-
-| Project | Description |
-|---------|-------------|
-| 🐎 [**hkjc-api**](https://hkjc-web.vercel.app/) | Live and historical Hong Kong Jockey Club racing data API. REST endpoints for results, form, and race cards; WebSocket feed for real-time odds. Built with FastAPI, PostgreSQL, Redis, and Playwright on a self-hosted stack. HK racing is a ~HK$100B/season market — this is the data infrastructure to analyse it. |
-| [**pysvi**](https://github.com/marwinsteiner/pysvi) | SVI family vol surface calibration library on [PyPI](https://pypi.org/project/svi-py/). Raw SVI, SSVI, eSSVI, jump-wings with configurable no-arbitrage constraints. |
-| [**sysls**](https://github.com/marwinsteiner/sysls) | Systematic multi-asset long-short strategy framework. |
-| [**polymarket-bot**](https://github.com/marwinsteiner/polymarket-bot) | Algorithmic trading framework for Polymarket prediction markets. |
-| [**polymarket-btc-updown**](https://github.com/marwinsteiner/polymarket-btc-updown) | Terminal probability calculator for BTC using SSVI surfaces calibrated on Deribit options. |
-| [**ndx-0dte-gamma-imbalance**](https://github.com/marwinsteiner/ndx-0dte-gamma-imbalance) | Gamma volatility arbitrage strategy in NDX 0DTE options. |
-| [**perp-dashboard**](https://github.com/marwinsteiner/perp-dashboard) | Perpetual futures arbitrage / reverse carry dashboard. |
+We study intraday S&P 500 index option implied volatilities using an extended stochastic
+volatility-inspired parametrisation, recalibrated jointly across all expiries at 60-second inter
+vals over 63 trading days. Two experiments are conducted. The first decomposes the recon
+structed implied volatility surface via functional principal component analysis, fits a vector
+autoregression to the resulting factor scores, and tests whether the surface-level forecast can
+outperform a random walk. The second measures the basis between each quoted implied
+volatility and the fitted surface, tests for serial dependence, and assesses the economic scale
+of the resulting deviations against the bid–ask spread.
 
 ### Toolbox
 
