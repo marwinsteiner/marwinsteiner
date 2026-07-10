@@ -9,7 +9,9 @@ I'm a finance graduate from [Bayes Business School](https://www.bayes.city.ac.uk
 
 Right now, I'm building data and execution infrastructure for systematic trading in C++ and continuing my research in the relative-value volatility space.
 
-Previous roles:
+Currently forward-testing three quirky volatility statistical arbitrage edges in index vol. All of them (combined) lead to market-neutral returns.
+
+### Previous roles:
 - Data Engineer at Swiss Re
 - Summer Intern at Swiss Life Asset Managers
 - Spring Insight at Barclays
