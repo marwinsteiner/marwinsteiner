@@ -37,6 +37,131 @@ outperform a random walk. The second measures the basis between each quoted impl
 volatility and the fitted surface, tests for serial dependence, and assesses the economic scale
 of the resulting deviations against the bid–ask spread.
 
+### My Systematic Trading Setup
+
+Most of my time goes into a systematic trading system that runs end-to-end on a local Kubernetes cluster: research, calibration, execution, risk, reconciliation and post-trade accounting. It is split into three repositories so that a new strategy is a *new pod*, not a new system.
+
+- **`trading-core`**: a shared C++ SDK, consumed as a git submodule. It owns the pluggable interfaces (market data, broker, volatility surface, IV solver) and the event envelope every pod speaks. Strategies depend on interfaces, never on a vendor.
+- **`trading-infra`**: the control plane. Ingests every pod's events over a length-prefixed TCP envelope, enforces risk limits against *broker-truth* margin, aggregates the cross-strategy book, records everything, and runs post-trade reporting.
+- **`trading-platform`**: research and observability. An immutable tick/bar archive, a materializer into QuestDB, a seekable replay engine for what-if calibration, and Grafana for dashboards, alerting and audited operator actions.
+
+```mermaid
+flowchart TB
+
+subgraph SRC["Market data sources"]
+  direction LR
+  DBTO["Databento<br/>TBBO / MBP-1 ticks"]
+  DXL["DXLink<br/>live option chains"]
+  VEND["Yahoo, Nasdaq Trader,<br/>SEC, OpenFIGI, FINRA"]
+end
+
+subgraph PLAT["trading-platform: research, data lake, observability"]
+  direction TB
+  DBN[("DBN archive<br/>immutable, re-downloadable")]
+  EQA[("Equities archive<br/>raw parquet, one part per fetch")]
+  MATZ["Materializer<br/>validate, segment, log-returns"]
+  PLAYER["Replay player<br/>synthetic clock, seekable"]
+  SUBS["Research subscribers<br/>SANOS / volfi calibration hosts"]
+  GRAF["Grafana<br/>dashboards, replay, alerting"]
+  PROM["Prometheus<br/>node + kube-state metrics"]
+end
+
+QDB[("QuestDB<br/>one store: ticks, daily bars, greeks,<br/>NAV, trades, breaches, audit trail")]
+
+subgraph CORE["trading-core: shared C++ SDK (git submodule)"]
+  direction LR
+  I1["DataSource<br/>DXLink, Databento"]
+  I2["BrokerAdapter<br/>IBKR, Tastytrade"]
+  I3["SurfaceModel<br/>eSSVI, SANOS"]
+  I4["IVSolver<br/>LBR, volfi"]
+  I5["EventPusher<br/>envelope over TCP"]
+end
+
+subgraph STRAT["Strategy repos: one pod per strategy, per mode"]
+  direction LR
+  ST1["index_volstrat<br/>SPX / NDX / RUT / XSP<br/>relative-value vol arb"]
+  ST2["equity long-only"]
+  ST3["equity long / short"]
+  ST4["managed futures<br/>trend and carry"]
+  ST5["FX carry"]
+  ST6["rates vol"]
+end
+
+subgraph INFRA["trading-infra: control plane"]
+  direction TB
+  API["api-server<br/>envelope ingest, REST + WebSocket<br/>operator identity and audit"]
+  RISK["risk-manager<br/>scoped limit groups<br/>broker-truth margin"]
+  BOOK["book-manager<br/>cross-strategy positions, NAV"]
+  RECO["recorder<br/>to QuestDB, spills and replays"]
+  POST["posttrade<br/>performance, accounting, exports"]
+end
+
+subgraph EXEC["Execution venues"]
+  direction LR
+  IBKR["IBKR TWS"]
+  TT["Tastytrade"]
+end
+
+DBTO --> DBN
+VEND --> EQA
+DXL --> STRAT
+DBN --> MATZ
+EQA --> MATZ
+MATZ --> QDB
+DBN --> PLAYER
+PLAYER --> SUBS
+SUBS -.->|"models promoted once validated"| CORE
+
+CORE ==>|"linked by every strategy"| STRAT
+STRAT ==>|"state, trades, signals, NAV"| API
+API --> RECO
+RECO --> QDB
+API --> BOOK
+API <--> RISK
+RISK -.->|"pause, flatten, liquidate"| STRAT
+
+STRAT ==>|"orders"| EXEC
+EXEC -->|"fills, positions, margin impacts"| STRAT
+
+QDB --> GRAF
+QDB --> POST
+PROM --> GRAF
+GRAF -.->|"audited operator actions"| API
+
+classDef live fill:#0d7a3e,stroke:#0a5c2f,color:#ffffff
+classDef planned fill:#39404d,stroke:#7d8590,color:#e6edf3,stroke-dasharray: 5 3
+classDef store fill:#1f6feb,stroke:#1158c7,color:#ffffff
+classDef ctrl fill:#8250df,stroke:#6639ba,color:#ffffff
+
+class ST1 live
+class ST2,ST3,ST4,ST5,ST6 planned
+class QDB,DBN,EQA store
+class API,RISK,BOOK,RECO,POST ctrl
+```
+
+Green: built and running. Dashed grey: not built yet.
+
+**How a strategy slots in.** Every pod, whatever it trades, speaks one protocol and inherits risk, recording, reconciliation and reporting for free:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant P as Strategy pod
+    participant A as api-server
+    participant R as risk-manager
+    participant Q as QuestDB
+    participant B as Broker
+
+    P->>A: state, trades, signals, NAV, heartbeat
+    A->>Q: every event persisted by the recorder
+    A->>R: forwarded for limit evaluation
+    R-->>P: pause_entries / flatten_and_halt / liquidate
+    P->>B: orders via BrokerAdapter
+    B-->>P: fills, positions, per-position margin impacts
+    P->>P: reconcile book against broker, drop and adopt
+    Note over P,B: forced exits on max-hold and DTE run independently of signals
+```
+
 ### Toolbox
 
 ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white)
@@ -46,4 +171,5 @@ of the resulting deviations against the bid–ask spread.
 ![PySpark](https://img.shields.io/badge/-PySpark-E25A1C?style=flat-square&logo=apachespark&logoColor=white)
 ![SQL](https://img.shields.io/badge/-SQL-4479A1?style=flat-square&logo=postgresql&logoColor=white)
 ![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/-Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white)
 ![Palantir Foundry](https://img.shields.io/badge/-Palantir_Foundry-101113?style=flat-square&logo=palantir&logoColor=white)
