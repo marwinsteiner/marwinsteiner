@@ -26,7 +26,7 @@ A few threads I'm currently pulling on:
 - **HKJC API.** As a transient interest, I wrote a scraper for and strung an API around the Hong Kong Jockey Club website, allowing retrieval of historic race and form data because I did not want to pay for existing services. The goal was to use machine learning to identify consistent race winners. This research is not publicly available.
 
 ### Paper Abstracts
-Title: Mean Reversion in the Intraday Implied Volatility Surface of S&P 500 Options
+_Title: Mean Reversion in the Intraday Implied Volatility Surface of S&P 500 Options_
 
 We study intraday S&P 500 index option implied volatilities using an extended stochastic
 volatility-inspired parametrisation, recalibrated jointly across all expiries at 60-second inter
@@ -36,6 +36,10 @@ autoregression to the resulting factor scores, and tests whether the surface-lev
 outperform a random walk. The second measures the basis between each quoted implied
 volatility and the fitted surface, tests for serial dependence, and assesses the economic scale
 of the resulting deviations against the bid–ask spread.
+
+_Title: Reverse-Engineering a Dominant Market Maker from Level 4 Order Book Data (ongoing)_
+
+Avellaneda and Stoikov's definition of market making as a stochastic optimal control problem is one of the seminal works in the academic study of market making. However, testing whether a large liquidity provider actually follows this method requires detailed order book data, not commonly disseminated by traditional financial exchanges. Recently, a Level 4 order book dataset from the perpetual futures exchange Hyperliquid was published, for the first time allowing us to pose the question whether any large market makers actually use this model. We identify the largest market maker by traded- against resting notional, reconstructing its quotes, quoting ladder, and inventory every second. Arrival intensities are estimated from the wallet's own resting orders by censored Poisson maximum likelihood estimation.
 
 ### My Systematic Trading Setup
 
